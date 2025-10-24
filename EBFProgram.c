@@ -41,13 +41,3 @@ int main() {
 
     return 0;
 }
-
-
-
-// root@DESKTOP-MNOTUNE:/mnt/c/Users/Admin/Desktop/IITM/Profiling/ebpf# sudo bpftrace -e 'tracepoint:syscalls:sys_enter_open,tracepoint:syscalls:sys_enter_openat /comm=="RunProg"/ { @open_count[pid] = count(); } tracepoint:syscalls:sys_exit_open,tracepoint:syscalls:sys_exit_openat /comm=="RunProg"/ { } tracepoint:syscalls:sys_enter_close /comm=="RunProg"/ { @close_count[pid] = count(); } tracepoint:syscalls:sys_exit_close /comm=="RunProg"/ { } tracepoint:syscalls:sys_enter_read /comm=="RunProg"/ { @read_count[pid] = count(); }'
-// Attaching 7 probes...
-// ^C
-
-// @close_count[2462]: 13
-// @open_count[2462]: 13 
-// @read_count[2462]: 11 
