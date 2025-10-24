@@ -1,0 +1,18 @@
+tracepoint:syscalls:sys_enter_open,
+tracepoint:syscalls:sys_enter_openat
+/comm == "RunProg"/
+{
+    @open_count[pid] = count();
+}
+
+tracepoint:syscalls:sys_enter_close
+/comm == "RunProg"/
+{
+    @close_count[pid] = count();
+}
+
+tracepoint:syscalls:sys_enter_read
+/comm == "RunProg"/
+{
+    @read_count[pid] = count();
+}
